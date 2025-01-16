@@ -1,0 +1,12 @@
+<h1>All Cars</h1>
+
+<ul>
+  <% @cars.each do |car| %>
+    <li>
+      <strong><%= car.brand %> <%= car.model %></strong> (<%= car.year %>)
+      <br>
+      <a href="<%= car_path(car) %>">View Details</a>
+    </li>
+  <% end %>
+</ul>
+

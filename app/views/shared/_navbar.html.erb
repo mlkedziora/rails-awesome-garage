@@ -1,0 +1,12 @@
+<nav style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #f8f9fa; border-bottom: 1px solid #ddd;">
+  <div style="display: flex; align-items: center;">
+    <%= image_tag "logo.png", alt: "Logo", style: "height: 40px; margin-right: 10px;" %>
+    <h1 style="margin: 0; font-size: 20px;">Awesome Garage</h1>
+  </div>
+
+  <div>
+    <a href="<%= cars_path %>" style="margin-right: 20px; text-decoration: none; color: #007bff;">Home</a>
+    <a href="<%= favourites_path %>" style="text-decoration: none; color: #007bff;">My Garage</a>
+  </div>
+</nav>
+
