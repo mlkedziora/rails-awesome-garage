@@ -64,3 +64,6 @@ group :test do
 end
 
 gem 'simple_form'
+gem 'sassc-rails'
+gem 'webpacker'
+
