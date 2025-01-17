@@ -6,12 +6,22 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_importmap_tags %>
+
+    <!-- Debugging Import Maps -->
+    <script type="module">
+      try {
+        import "./components/dynamic_navbar";
+        console.log("dynamic_navbar loaded successfully");
+      } catch (e) {
+        console.error("Failed to load dynamic_navbar:", e);
+      }
+   </script>
+
   </head>
 
   <body>
     <%= render "shared/navbar" %>
-
     <%= yield %>
   </body>
 </html>

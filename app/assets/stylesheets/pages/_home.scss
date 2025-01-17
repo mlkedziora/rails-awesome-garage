@@ -1,0 +1,30 @@
+.homepage {
+  background: url(asset-path('background.png')) no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  &__content {
+    text-align: center;
+    color: #fff;
+
+    h1 {
+      font-size: 6.8rem;
+      letter-spacing: 1px;
+      font-weight: 600; // Semi-bold weight
+      margin-bottom: 0rem;
+      font-family: 'CustomFont', sans-serif;
+      color: fuchsia; // Use the CustomFont family
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: normal; // Default to normal weight
+      font-family: inherit;
+      margin: 0;
+      margin-bottom: 40px;
+    }
+  }
+}

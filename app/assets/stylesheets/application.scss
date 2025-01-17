@@ -15,14 +15,27 @@
  */
 
 // Add custom SCSS here
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
+@import "pages/home";
+@import "components/navbar";
+@import "shared/layout";
+@import "components/navbar";
+@import "elements/headings";
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url(asset-path('GeneralSans-Regular.otf')) format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-h1 {
-  color: #333;
-  text-align: center;
+@font-face {
+  font-family: 'CustomFont';
+  src: url(asset-path('GeneralSans-Semibold.otf')) format('opentype');
+  font-weight: 600; // Use a numeric value for semi-bold
+  font-style: normal;
 }
+
+body {
+  font-family: 'CustomFont', sans-serif;
+}
+

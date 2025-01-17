@@ -1,0 +1,87 @@
+.l-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 100%);
+  color: #fff; // Set the default font color to white
+  padding: 10px 0;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+
+    .l-header__link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      transition: letter-spacing 0.3s, text-shadow 0.3s;
+
+      &:hover {
+        letter-spacing: 1px; // Subtle letter-spacing adjustment
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); // Light glow effect
+      }
+
+      .l-header__logo {
+        height: 70px;
+        margin-right: 0px;
+      }
+
+      .l-header__title {
+        white-space: nowrap;
+        font-size: 1rem;
+        overflow: visible;
+      }
+    }
+  }
+
+  &__nav {
+    justify-self: start;
+    margin-left: 18%;
+
+    .l-header__ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li a {
+        text-decoration: none;
+        color: inherit; // Use inherited dynamic color
+        transition: letter-spacing 0.3s, text-shadow 0.3s;
+
+        &:hover {
+          letter-spacing: 1px; // Subtle letter-spacing adjustment
+          text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); // Light glow effect
+        }
+      }
+    }
+  }
+
+  &__sound {
+    justify-self: end;
+
+    .l-header__sound-button {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: letter-spacing 0.3s, text-shadow 0.3s;
+
+      &:hover {
+        letter-spacing: 1px; // Subtle letter-spacing adjustment
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); // Light glow effect
+      }
+    }
+  }
+}

@@ -65,5 +65,4 @@ end
 
 gem 'simple_form'
 gem 'sassc-rails'
-gem 'webpacker'
-
+# gem 'webpacker'
