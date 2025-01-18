@@ -1,12 +1,21 @@
-<h1>All Cars</h1>
-
-<ul>
+<div class="cars-container">
   <% @cars.each do |car| %>
-    <li>
-      <strong><%= car.brand %> <%= car.model %></strong> (<%= car.year %>)
-      <br>
-      <a href="<%= car_path(car) %>">View Details</a>
-    </li>
+    <div class="car-card">
+      <div class="car-card__image">
+        <%= image_tag "background.png", alt: "#{car.brand} #{car.model}" %>
+      </div>
+      <div class="car-card__details">
+        <h2 class="car-card__brand"><%= car.brand %></h2>
+        <p class="car-card__model"><%= car.model %></p>
+        <p class="car-card__date">Added: <%= car.created_at.strftime("%a %b %e at %l:%M %p") %></p>
+        <div class="car-card__bottom">
+          <div class="car-card__rating">
+            <% average_rating = car.reviews.average(:rating) %>
+            <%= average_rating ? ' ◈ ' * average_rating.to_i : "No ratings yet" %>
+          </div>
+          <a href="<%= car_path(car) %>" class="car-card__comment-link">Comment</a>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
-
+</div>
