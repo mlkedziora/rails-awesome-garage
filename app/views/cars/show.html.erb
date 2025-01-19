@@ -1,36 +1,79 @@
-<h1><%= @car.brand %> <%= @car.model %></h1>
-<p><strong>Year:</strong> <%= @car.year %></p>
-<p><strong>Fuel:</strong> <%= @car.fuel %></p>
-<p><strong>Owner:</strong> <%= @car.owner.nickname %></p>
+<div class="car-show-container">
+  <!-- Image on top -->
+  <img src="<%= asset_path('background.png') %>" alt="<%= @car.brand %> <%= @car.model %>" class="car-show-image" />
 
-<h2>Reviews</h2>
-<ul>
-  <% @reviews.each do |review| %>
-    <li>
-      <strong>Rating:</strong> <%= review.rating %>/5<br>
-      <strong>Comment:</strong> <%= review.comment.presence || "No comment provided" %>
-    </li>
-  <% end %>
-</ul>
+  <!-- Car details below -->
+  <div class="car-details">
+    <h1><%= @car.brand %> <%= @car.model %></h1>
+    <p><strong>Year:</strong> <%= @car.year %></p>
+    <p><strong>Fuel:</strong> <%= @car.fuel %></p>
+    <p><strong>Owner:</strong> <%= @car.owner.nickname %></p>
 
-<h3>Leave a Review</h3>
-<%= simple_form_for [@car, @review] do |f| %>
-  <div>
-    <%= f.input :rating, label: "Rating (0-5)", input_html: { min: 0, max: 5, step: 1 } %>
-    <%= f.input :comment, label: "Comment (optional)" %>
-  </div>
-  <%= f.button :submit, "Submit Review" %>
-<% end %>
+    <h2>Reviews</h2>
+    <div class="reviews">
+      <!-- Rating Breakdown on the Left -->
+      <div class="rating-breakdown">
+        <% (1..5).each do |rating| %>
+          <div class="rating-item">
+            <span class="percentage"><%= (@reviews.where(rating: rating).count.to_f / @reviews.count * 100).round(0) %>%</span>
+            <div class="symbols">
+              <% 5.times do |i| %>
+                <% if i + 1 <= rating %>
+                  <span class="symbol filled">◈</span>
+                <% elsif i < rating %>
+                  <span class="symbol half">◈</span>
+                <% else %>
+                  <span class="symbol">◈</span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-<h3>Add to Garage</h3>
+      <!-- Comments on the Right -->
+      <div class="comments">
+        <% @reviews.each do |review| %>
+          <div class="comment-item">
+            <strong>Rating:</strong>
+            <div class="rating-symbols">
+              <% 5.times do |i| %>
+                <% if i < review.rating %>
+                  <span class="symbol filled">◈</span>
+                <% else %>
+                  <span class="symbol">◈</span>
+                <% end %>
+              <% end %>
+            </div>
+            <br>
+            <strong>Comment:</strong> <%= review.comment.presence || "No comment provided" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-<% if Favourite.exists?(car: @car) %>
-  <p>This car is in your garage.</p>
-<% else %>
-  <%= form_with url: car_favourites_path(@car), method: :post, local: true do |f| %>
-    <%= f.submit "Add to your garage" %>
-  <% end %>
-<% end %>
+    <h3 class="large">Leave a Review</h3>
+    <div class="form-section">
+      <%= simple_form_for [@car, @review] do |f| %>
+        <div>
+          <%= f.input :rating, label: "* Rating (0-5)", input_html: { min: 0, max: 5, step: 1 } %>
+          <%= f.input :comment, label: "Comment (optional)" %>
+        </div>
+        <%= f.button :submit, "Submit Review" %>
+      <% end %>
+    </div>
+
+    <h3>Add to Garage</h3>
+    <div class="form-section">
+      <% if Favourite.exists?(car: @car) %>
+        <p>This car is in your garage.</p>
+      <% else %>
+        <%= form_with url: car_favourites_path(@car), method: :post, local: true do |f| %>
+          <%= f.submit "Add to your garage" %>
+        <% end %>
+      <% end %>
+    </div>
 
 
-<a href="<%= cars_path %>">Back to all cars</a>
+    <!-- Back link -->
+    <a href="<%= cars_path %>" class="back-link">Back to all cars</a>

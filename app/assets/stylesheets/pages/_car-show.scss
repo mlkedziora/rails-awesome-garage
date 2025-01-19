@@ -1,0 +1,277 @@
+body {
+  background: url(asset-path('background2.png')) no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'CustomFont', sans-serif;
+}
+
+// Main container for the show page
+.car-show-container {
+  margin: 0 auto;
+  margin-top: 17vh;
+  margin-bottom: 10vh; // Space from the top for the container
+  max-width: 800px;
+  background-color: rgba(0, 0, 0, 0.8); // Dark overlay for the container
+  border: 2px solid rgba(255, 255, 255, 0.5); // Semi-transparent white border
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  overflow: hidden; // Ensure content doesn't overflow
+  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
+  opacity: 0.8; // Slightly transparent by default
+  filter: blur(2px); // Slight blur by default
+
+  &:hover {
+    transform: scale(1); // Slightly larger on hover
+    opacity: 1; // Fully visible
+    filter: blur(0); // Remove blur on hover
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8); // Light glowing shadow
+  }
+
+  // Image section
+  .car-show-image {
+    width: 100%;
+    height: 300px; // Fixed height for consistency
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease-in-out;
+  }
+
+  // Text content below the image
+  .car-details {
+    padding: 20px;
+    color: #fff;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 0px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: #ccc;
+
+      strong {
+        color: #fff; // Highlighted strong text
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 30px;
+      color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1); // Semi-transparent white background
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+        color: #fff;
+
+        strong {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .reviews {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 55px;
+    margin-bottom: 35px; // Space between the rating breakdown and comments
+
+    // Rating breakdown on the left
+    .rating-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      // Adjustable sizes for .rating-breakdown
+      &.small {
+        flex: 1; // Takes up less space
+        font-size: 0.8rem;
+      }
+
+      &.medium {
+        flex: 2; // Default size
+        font-size: 1rem;
+      }
+
+      &.large {
+        flex: 3; // Takes up more space
+        font-size: 1.5rem;
+      }
+
+      .rating-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+
+        .percentage {
+          width: 50px;
+          text-align: right;
+          font-size: inherit; // Dynamically adjusts with the size
+          color: #ccc; // Default gray text
+        }
+
+        .symbols {
+          display: flex;
+          gap: 5px;
+
+          .symbol {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.3); // Darker by default
+
+            &.filled {
+              color: #fff; // Bright for filled ratings
+            }
+
+            &.half {
+              background: linear-gradient(to right, #fff 50%, rgba(255, 255, 255, 0.3) 50%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+        }
+      }
+    }
+
+    // Comments on the right
+    .comments {
+      flex: 2; // Takes up more space
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .comment-item {
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1); // Semi-transparent background
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+        color: #fff;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+          background-color: #fff; // Brighten on hover
+          color: #000;
+
+          .rating-symbols .symbol {
+            color: rgba(0, 0, 0, 0.3); // Default lighter black for unfilled symbols
+          }
+
+          .rating-symbols .symbol.filled {
+            color: #000; // Dark black for filled symbols
+          }
+        }
+
+        .rating-symbols {
+          display: inline-flex; // Ensure it stays next to "Rating:"
+          gap: 5px; // Space between symbols
+          margin-left: 10px; // Space between "Rating:" and the symbols
+
+          .symbol {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.3); // Default darker for unfilled symbols
+
+            &.filled {
+              color: #fff; // Bright white for filled symbols
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+  .form-section {
+    margin-top: 25px;
+    margin-bottom: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    padding: 20px;
+    padding-bottom: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    // Reset global heading styles for h3 inside form-section
+    > h3 {
+      all: unset; // Resets global styles
+      font-size: 15rem; // Set your custom font size
+      font-weight: bold; // Ensure bold
+      margin-bottom: 15px;
+      color: #fff; // Default text color
+
+      &.small {
+        font-size: 1rem; // Smaller variant
+      }
+
+      &.large {
+        font-size: 2rem; // Larger variant
+      }
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    input,
+    textarea {
+      width: 97%;
+      padding: 10px;
+      margin-bottom: 15px;
+      background-color: rgba(0, 0, 0, 0.645);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      border-radius: 4px;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover,
+      &:focus {
+        background-color: rgb(255, 255, 255);
+        color: #000;
+      }
+    }
+
+    > button,
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 8px 10px;
+      background-color: #000;
+      color: #fff;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        box-shadow: 0 0 15px 1px rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+}
